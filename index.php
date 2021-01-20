@@ -27,14 +27,13 @@
 <?php 
  $time=0;
  $cores=0;
- $strength=
+ $strength;
  $requestType=$_SERVER['REQUEST_METHOD'];
 echo $requestType;
 if($requestType=='POST')
 {
 
-	$time=exec('cd /home/vagrant/cloud && time -p mpirun --hostfile host --mca btl_tcp_if_include eth1 -display-allocation ./bin/mpi-cracker -bluns -p $(echo -n "test" | sha256sum) -v');
-	sleep(10);
+	$time=exec('cd /home/vagrant/cloud && time -p mpirun --hostfile host --mca btl_tcp_if_include eth1 -display-allocation ./bin/mpi-cracker -bluns -p $(echo -n "test" | sha256sum) -v 2>&1 &');
 	$cores=1;
 	$strength='Good';
 }
