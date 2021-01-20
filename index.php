@@ -34,6 +34,7 @@ if($requestType=='POST')
 {
 
 	$time=exec('cd /home/vagrant/cloud && time -p mpirun --hostfile host --mca btl_tcp_if_include eth1 -display-allocation ./bin/mpi-cracker -bluns -p $(echo -n "test" | sha256sum) -v');
+	sleep(10);
 	$cores=1;
 	$strength='Good';
 }
