@@ -33,7 +33,7 @@ echo $requestType;
 if($requestType=='POST')
 {
 
-	$time=shell_exec('cd /home/vagrant/cloud && time -p mpirun --hostfile host --mca btl_tcp_if_include eth1 -display-allocation ./bin/mpi-cracker -bluns -p $(echo -n "test" | sha256sum) -v');
+	$time=exec('cd /home/vagrant/cloud && time -p mpirun --hostfile host --mca btl_tcp_if_include eth1 -display-allocation ./bin/mpi-cracker -bluns -p $(echo -n "test" | sha256sum) -v');
 	$cores=1;
 	$strength='Good';
 }
