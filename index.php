@@ -34,6 +34,7 @@ if($requestType=='POST')
 {
 
 	$time=exec(' cd /home/vagrant/cloud/ &&  time ./bin/serial-cracker -bluns -p $(echo -n "test" | sha256sum)  2>&1 &');
+	print_r($time);
 	$cores=1;
 	$strength='Good';
 }
