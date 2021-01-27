@@ -36,7 +36,7 @@ if($requestType=='POST')
 	$time=shell_exec(' cd /home/vagrant/cloud/ &&  time ./bin/serial-cracker -bluns -p $(echo -n "test" | sha256sum)  2>&1 &');
 	echo $time;
 	echo gettype($time);
-	echo substr($time,20,4);
+	echo substr($time,21,5);
 	$cores=1;
 	$strength='Good';
 }
@@ -84,7 +84,7 @@ if($requestType=='POST')
               <i class="icon-screen-desktop m-auto text-primary"></i>
             </div>
             <h1>Time</h1>
-            <h3><?php echo $time;?> seconds</h3>
+            <h3><?php echo substr($time,21,5);?> seconds</h3>
             <p class="lead mb-0">Find out how much time was taken to display the results</p>
           </div>
         </div>
