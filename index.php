@@ -30,10 +30,11 @@
  $strength;
  $requestType=$_SERVER['REQUEST_METHOD'];
 echo $requestType;
+echo $_POST['password'];
 if($requestType=='POST')
 {
 
-	$time=shell_exec(' cd /home/vagrant/cloud/ &&  time ./bin/serial-cracker -bluns -p $(echo -n "test" | sha256sum)  2>&1 &');
+	$time=shell_exec(' cd /home/vagrant/cloud/ &&  time ./bin/serial-cracker -bluns -p $(echo -n '.$_POST['password'].' | sha256sum)  2>&1 &');
 	echo $time;
 	echo gettype($time);
 	echo substr($time,21,5);
@@ -62,7 +63,7 @@ if($requestType=='POST')
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
 
-                <input type="password" class="form-control form-control-lg" placeholder="Type your password">
+                <input type="password" name="password" class="form-control form-control-lg" placeholder="Type your password">
               </div>
               <div class="col-12 col-md-3">
                 <button type="submit" class="btn btn-block btn-lg btn-primary">Check it!</button>
