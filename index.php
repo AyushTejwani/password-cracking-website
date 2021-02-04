@@ -34,7 +34,6 @@ echo $_POST['password'];
 if($requestType=='POST')
 {
 	$time=shell_exec(' cd /home/vagrant/cloud/ &&  time mpirun  ./bin/mpi-cracker -bluns -p $(echo -n '.$_POST['password'].' | sha256sum)  2>&1 &');
-	//$time=shell_exec(' cd /home/vagrant/cloud/ &&  time ./bin/serial-cracker -bluns -p $(echo -n '.$_POST['password'].' | sha256sum)  2>&1 &');
 	echo $time;
 	echo gettype($time);
 	echo substr($time,21,5);
