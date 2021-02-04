@@ -33,7 +33,7 @@ echo $requestType;
 echo $_POST['password'];
 if($requestType=='POST')
 {
-	$time=shell_exec(' cd /home/vagrant/cloud/ &&  time mpirun --hostfile host --mca btl_tcp_if_include eth1 ./bin/mpi-cracker -bluns -p $(echo -n '.$_POST['password'].' | sha256sum)  2>&1 &');
+	$time=shell_exec(' cd /home/vagrant/cloud/ &&  time mpirun  ./bin/mpi-cracker -bluns -p $(echo -n '.$_POST['password'].' | sha256sum)  2>&1 &');
 	$strength=shell_exec(' cd /home/vagrant/cloud/ && python strength.py '.$_POST['password'].' 2>&1 &');
 	echo $time;
 	echo gettype($time);
