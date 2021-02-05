@@ -35,6 +35,7 @@ if($requestType=='POST')
 {
 	$time=shell_exec(' cd /home/vagrant/cloud/ &&  time mpirun  ./bin/mpi-cracker -bluns -p $(echo -n '.$_POST['password'].' | sha256sum)  2>&1 &');
 	$strength=shell_exec(' cd /home/vagrant/cloud/ && python strength.py '.$_POST['password'].' 2>&1 &');
+	$imp=shell_exec(' cd /home/vagrant/cloud/ && python improvements.py '.$_POST['password'].' 2>&1 &');
 	echo $time;
 	echo gettype($time);
 	echo substr($time,21,5);
@@ -120,9 +121,10 @@ if($requestType=='POST')
 
         <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('img/bg-showcase-1.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-          <h2>Fully Responsive Design</h2>
-          <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
-        </div>
+          <h2>Improvements</h2>
+          <p class="lead mb-0">
+	      <?php  echo $imp;?>
+	      </div>
       </div>
      
     </div>
